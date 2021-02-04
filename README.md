@@ -2,10 +2,23 @@
 
 Learning react and ES6 by building a Movie Discovery App.
 
-## Screens
+## Screens Router setting (GNB)
 
-- [ ] Home
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
+- [x] Home
+- [x] TV Shows
+- [x] Search
+- [x] Detail
+
+## API Verbs
+### Movies list
+
+- [ ] Now playing list
+- [ ] Upcoming
+- [ ] Top Rated
+- [ ] Popular
+### TVs lists
+
+- [ ] Top Rated
+- [ ] Popular
+- [ ] Airing Today
 
