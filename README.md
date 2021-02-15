@@ -25,3 +25,4 @@ Learning react and ES6 by building a Movie Discovery App.
 - [ ] Detail of TV program by id
 - [ ] Searching for TV program
 
+Presenter pattern for react compenent coding pattern.
