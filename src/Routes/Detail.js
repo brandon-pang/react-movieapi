@@ -1,8 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+import { moviesApi, tvApi } from "../api";
 import styled from "styled-components";
 import Helmet from "react-helmet";
-import Loader from "../../Components/Loader";
+import Loader from "../Components/Loader";
+import noImg from "../assets/noPosterSmall.png"
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -68,11 +69,43 @@ const Overview = styled.p`
   width: 50%;
 `;
 
-const DetailPresenter = ({ result, loading, error }) =>
-    loading ? (
+export default function Detail({
+    location: { pathname },
+    match: { params: { id } },
+    history: { push }
+}) {
+    /* eslint-disable*/
+    const isMovie = pathname.includes("/movie/")
+    const [result, setResult] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchData() {
+            const parsedId = parseInt(id);
+            if (isNaN(parsedId)) {
+                return push("/")
+            }
+            let result = null;
+            try {
+                if (isMovie) {
+                    ({ data: result } = await moviesApi.movieDetail(parsedId));
+                } else {
+                    ({ data: result } = await tvApi.showDetail(parsedId));
+                }
+                setResult(result)
+            } catch (e) {
+                console.error(e)
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchData();
+    }, [id]);
+
+    return loading ? (
         <>
             <Helmet>
-                <title>Loading | Nomflix</title>
+                <title>Loading | Betflix</title>
             </Helmet>
             <Loader />
         </>
@@ -81,7 +114,7 @@ const DetailPresenter = ({ result, loading, error }) =>
                 <Helmet>
                     <title>
                         {result.original_title ? result.original_title : result.original_name}{" "}
-          | Nomflix
+          | Betflix
         </title>
                 </Helmet>
                 <Backdrop
@@ -92,7 +125,7 @@ const DetailPresenter = ({ result, loading, error }) =>
                         bgImage={
                             result.poster_path
                                 ? `https://image.tmdb.org/t/p/original${result.poster_path}`
-                                : require("../../assets/noPosterSmall.png")
+                                : noImg
                         }
                     />
                     <Data>
@@ -126,11 +159,5 @@ const DetailPresenter = ({ result, loading, error }) =>
                 </Content>
             </Container>
         );
-
-DetailPresenter.propTypes = {
-    result: PropTypes.object,
-    loading: PropTypes.bool.isRequired,
-    error: PropTypes.string
-};
-
-export default DetailPresenter;
+    /* eslint-enable*/
+}

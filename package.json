@@ -1,5 +1,6 @@
 {
-  "name": "nomadcoder-react",
+  "name": "betflix",
+  "description": "Practice for front-end side with cloned Netflix",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

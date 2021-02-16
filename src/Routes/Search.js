@@ -1,13 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { moviesApi, tvApi } from "../api";
 import styled from "styled-components";
-import Loader from "../../Components/Loader";
-import Section from "../../Components/Section";
-import Message from "../../Components/Message";
-import Poster from "../../Components/Poster";
-
-
-
+import Loader from "../Components/Loader";
+import Section from "../Components/Section";
+import Message from "../Components/Message";
+import Poster from "../Components/Poster";
 const Container = styled.div`
   padding: 0px 20px;
 `;
@@ -23,16 +20,47 @@ const Input = styled.input`
   width: 100%;
 `;
 
-const SearchPresenter = ({
-    movieResults,
-    tvResults,
-    loading,
-    searchTerm,
-    handleSubmit,
-    error,
-    updateTerm
-}) => (
-    <Container>
+export default function Search() {
+    const [movieResults, setMovieResults,] = useState(null);
+    const [tvResults, setTvResults] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("")
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        if (searchTerm !== "") {
+            searchByTerm();
+        }
+    };
+
+    const updateTerm = event => {
+        const {
+            target: { value }
+        } = event;
+        setSearchTerm(value)
+    };
+
+    const searchByTerm = async () => {
+        setLoading(true);
+        try {
+            const {
+                data: { results: movieResults }
+            } = await moviesApi.search(searchTerm);
+            const {
+                data: { results: tvResults }
+            } = await tvApi.search(searchTerm);
+            setMovieResults(movieResults)
+            setTvResults(tvResults)
+        } catch {
+            setError("Can't find results.")
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
+    return (<Container>
         <Form onSubmit={handleSubmit}>
             <Input
                 placeholder="Search Movies or TV Shows..."
@@ -83,16 +111,5 @@ const SearchPresenter = ({
                 </>
             )}
     </Container>
-);
-
-SearchPresenter.propTypes = {
-    movieResults: PropTypes.array,
-    tvResults: PropTypes.array,
-    error: PropTypes.string,
-    searchTerm: PropTypes.string,
-    loading: PropTypes.bool.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    updateTerm: PropTypes.func.isRequired
-};
-
-export default SearchPresenter;
+    );
+}
