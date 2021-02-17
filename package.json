@@ -3,6 +3,7 @@
   "description": "Practice for front-end side with cloned Netflix",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://elastic-wiles-17d24f.netlify.app/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.2",

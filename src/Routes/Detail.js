@@ -120,7 +120,8 @@ const BtnStyle = styled.button`
 const TabDetail = styled.div`
     overflow: auto;
     width:100%;
-    height: 100%;
+    min-height: 520px;
+    height:100%;
     background-color: rgb(20,20,20);
     padding: 10px 0px;
     border-radius:0 10px 10px 0;
@@ -157,7 +158,7 @@ const CountryCont = styled.div`
     margin:10px;
 `;
 const CountryTitle = styled.p`
-margin-bottom:10px;
+    margin-bottom:10px;
     font-size:32px;
     font-weight:bold;
 `;
@@ -188,7 +189,7 @@ const CompanyTitle = styled.p`
 `;
 const CompanyWrap = styled.ul`
     display: flex;
-    justify-content:center;
+    justify-content:flex-start;
     align-items: center;
     flex-wrap:wrap;
     width:100%;
@@ -269,6 +270,8 @@ export default function Detail({
     const opts = {
         height: '240',
         width: '420',
+        origin: 'https://elastic-wiles-17d24f.netlify.app/',
+        host: 'https://www.youtube.com', 
     };
     useEffect(() => {
         async function fetchData() {
@@ -381,11 +384,13 @@ export default function Detail({
                                         {result.videos.results ? (
                                             result.videos.results.map(
                                                 (item) => (
+                                                    item && item.key && (
                                                     <VidItem key={item.key}>
                                                         <YouTube videoId={item.key} opts={opts} />
                                                     </VidItem>
+                                                    )
                                                 )
-                                            )
+                                        )
                                         ) : ("There are no video clips!")
                                         }
                                     </VideoWrap>
