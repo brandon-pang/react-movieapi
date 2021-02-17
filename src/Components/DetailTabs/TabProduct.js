@@ -89,7 +89,6 @@ const TabProduct = ({ countries, companies }) => {
                     <CountryWrap>
                         {countries.map(item => (
                             <CountryItem key={item.iso_3166_1}>
-                                { console.log(item)}
                                 <CountryName>
                                     {item.iso_3166_1 === "US" && <span role="img" aria-label="US flag" style={{ fontSize: "60px" }}>🇺🇸</span>}
                                     {item.iso_3166_1 === "CA" && <span role="img" aria-label="Canada flag" style={{ fontSize: "60px" }}>🇨🇦</span>}
@@ -109,7 +108,6 @@ const TabProduct = ({ countries, companies }) => {
                     <CompanyWrap>
                         {companies.map(item => (
                             <CompanyItem key={item.id}>
-                                { console.log(item)}
                                 <CompanyImage
                                     bgUrl={
                                         item.logo_path
