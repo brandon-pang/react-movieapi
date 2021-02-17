@@ -74,35 +74,42 @@ const CompanyName = styled.p`
 font-size:14px;
 font-weight:bold;
 `;
+const ErrorTitle = styled.p`
+    margin-bottom:30px;
+    font-size:18px;
+    font-weight:bold;
+    color:darkred;
+`;
 const TabProduct = ({ countries, companies }) => {
     return (
         <ProductionCont>
-            {countries && (
+            {countries.length > 0 && (
                 <CountryCont>
                     <CountryTitle>Contries</CountryTitle>
                     <CountryWrap>
                         {countries.map(item => (
                             <CountryItem key={item.iso_3166_1}>
-                                {console.log(item)}
+                                { console.log(item)}
                                 <CountryName>
                                     {item.iso_3166_1 === "US" && <span role="img" aria-label="US flag" style={{ fontSize: "60px" }}>🇺🇸</span>}
                                     {item.iso_3166_1 === "CA" && <span role="img" aria-label="Canada flag" style={{ fontSize: "60px" }}>🇨🇦</span>}
                                     {item.iso_3166_1 === "JP" && <span role="img" aria-label="Japan flag" style={{ fontSize: "60px" }}>🇯🇵</span>}
                                     {item.iso_3166_1 === "DE" && <span role="img" aria-label="Germany flag" style={{ fontSize: "60px" }}>🇩🇪</span>}
                                     {item.iso_3166_1 === "KR" && <span role="img" aria-label="South Korea flag" style={{ fontSize: "60px" }}>🇰🇷</span>}
-
                                 </CountryName>
                             </CountryItem>
                         ))}
                     </CountryWrap>
                 </CountryCont>
             )}
-            {companies && (
+            {countries.length < 1 && (<CountryCont><ErrorTitle>Sorry there has no country list.</ErrorTitle></CountryCont>)}
+            {companies.length > 0 && (
                 <CompanyCont>
                     <CompanyTitle>Companies</CompanyTitle>
                     <CompanyWrap>
                         {companies.map(item => (
                             <CompanyItem key={item.id}>
+                                { console.log(item)}
                                 <CompanyImage
                                     bgUrl={
                                         item.logo_path
@@ -117,6 +124,7 @@ const TabProduct = ({ countries, companies }) => {
                     </CompanyWrap>
                 </CompanyCont>
             )}
+            {companies.length < 1 && (<CompanyCont><ErrorTitle>Sorry there has no company list.</ErrorTitle></CompanyCont>)}
         </ProductionCont>
     )
 }
