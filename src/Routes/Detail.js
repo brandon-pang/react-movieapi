@@ -6,8 +6,8 @@ import Loader from "../Components/Loader";
 import noImg from "../assets/noPosterSmall.png"
 import { faImdb } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import YouTube from "react-youtube";
 import noLogoImg from "../assets/noPosterSmall.png"
+import ReactPlayer from "react-player";
 const Container = styled.div`
   height: calc(100vh - 50px);
   width: 100%;
@@ -267,12 +267,6 @@ export default function Detail({
     const [result, setResult] = useState([]);
     const [loading, setLoading] = useState(true);
     const [tabIndex, setTabIndex] = useState(0);
-    const opts = {
-        height: '240',
-        width: '420',
-        origin: 'https://elastic-wiles-17d24f.netlify.app/',
-        host: 'https://www.youtube.com', 
-    };
     useEffect(() => {
         async function fetchData() {
             const parsedId = parseInt(id);
@@ -378,6 +372,7 @@ export default function Detail({
                                     <TabItem ><BtnStyle selected={tabIndex === 2} onClick={() => setTabIndex(2)}>Seasons</BtnStyle></TabItem>
                                 }
                             </TabBtnWarp>
+
                             <TabDetail>
                                 {tabIndex === 0 &&
                                     <VideoWrap>
@@ -386,7 +381,8 @@ export default function Detail({
                                                 (item) => (
                                                     item && item.key && (
                                                     <VidItem key={item.key}>
-                                                        <YouTube videoId={item.key} opts={opts} />
+                                                            <ReactPlayer url={`https://www.youtube-nocookie.com/embed/${item.key}`} width='480px'
+                                                                height='240px' />
                                                     </VidItem>
                                                     )
                                                 )
