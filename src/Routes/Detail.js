@@ -6,8 +6,7 @@ import Loader from "../Components/Loader";
 import noImg from "../assets/noPosterSmall.png"
 import { faImdb } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import noLogoImg from "../assets/noPosterSmall.png";
-import TabContainer from "../Components/TabContainer";
+import TabContainer from "../Components/DetailTabs/TabContainer";
 const Container = styled.div`
   height: calc(100vh - 50px);
   width: 100%;
