@@ -83,10 +83,14 @@ const TabProduct = ({ countries, companies }) => {
                     <CountryWrap>
                         {countries.map(item => (
                             <CountryItem key={item.iso_3166_1}>
+                                {console.log(item)}
                                 <CountryName>
                                     {item.iso_3166_1 === "US" && <span role="img" aria-label="US flag" style={{ fontSize: "60px" }}>🇺🇸</span>}
                                     {item.iso_3166_1 === "CA" && <span role="img" aria-label="Canada flag" style={{ fontSize: "60px" }}>🇨🇦</span>}
                                     {item.iso_3166_1 === "JP" && <span role="img" aria-label="Japan flag" style={{ fontSize: "60px" }}>🇯🇵</span>}
+                                    {item.iso_3166_1 === "DE" && <span role="img" aria-label="Japan flag" style={{ fontSize: "60px" }}>🇩🇪</span>}
+                                    {item.iso_3166_1 === "KR" && <span role="img" aria-label="Japan flag" style={{ fontSize: "60px" }}>🇰🇷</span>}
+
                                 </CountryName>
                             </CountryItem>
                         ))}
