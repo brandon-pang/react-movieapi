@@ -5,11 +5,20 @@ import TabSeason from "./TabSeason";
 import TabVideo from "./TabVideo";
 
 const TabContainer = ({ isMovie, result }) => {
-    const [tabIndex, setTabIndex] = useState(0);
+    let selectIndex = 0;
+    if (result.videos.results.length > 0) {
+        selectIndex = 0;
+    } else {
+        selectIndex = 1;
+    }
+
+    const [tabIndex, setTabIndex] = useState(selectIndex);
     return (
         <ExtraInfoContainer>
             <TabBtnWarp>
-                <TabItem><BtnStyle selected={tabIndex === 0} onClick={() => setTabIndex(0)}>Videos</BtnStyle></TabItem>
+                {result.videos.results.length > 0 &&
+                    <TabItem><BtnStyle selected={tabIndex === 0} onClick={() => setTabIndex(0)}>Videos</BtnStyle></TabItem>
+                }
                 <TabItem><BtnStyle selected={tabIndex === 1} onClick={() => setTabIndex(1)}>Productions</BtnStyle></TabItem>
                 {!isMovie &&
                     <TabItem ><BtnStyle selected={tabIndex === 2} onClick={() => setTabIndex(2)}>Seasons</BtnStyle></TabItem>

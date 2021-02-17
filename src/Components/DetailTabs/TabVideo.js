@@ -21,8 +21,7 @@ const VidItem = styled.li`
 const TabVideo = ({ results }) => {
     return (
         <VideoWrap>
-            {results ? (
-                results.map(
+            {results && results.map(
                     (item) => (
                         item && item.key && (
                             <VidItem key={item.key}>
@@ -35,9 +34,9 @@ const TabVideo = ({ results }) => {
                             </VidItem>
                         )
                     )
-                )
-            ) : ("There are no video clips!")
+            )
             }
+            {results.length < 1 && "There are no video clips!"}
         </VideoWrap>
     )
 }

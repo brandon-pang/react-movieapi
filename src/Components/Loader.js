@@ -6,12 +6,13 @@ const Container = styled.div`
   width: 100vw;
   display: flex;
   justify-content: center;
+  align-items:center;
   font-size: 30px;
   margin-top: 20px;
 `;
 // eslint-disable-next-line
 export default () => (
     <Container>
-        <span role="img" aria-label="Loading">⏳</span>
+    <span role="img" aria-label="Loading" style={{ fontSize: "32px" }}>⏳</span>
     </Container>
 )
