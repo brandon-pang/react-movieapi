@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-
+import logoImg from "../assets/logo-web-betflix.png"
 const Header = styled.header`
   color: white;
   position: fixed;
@@ -18,14 +18,18 @@ const Header = styled.header`
 
 const List = styled.ul`
   display: flex;
+  width:100%;
 `;
 
 const Item = styled.li`
-  width: 80px;
+  width:100%;
+  max-width:100px;
   height: 50px;
   text-align: center;
   border-bottom: 3px solid
     ${props => (props.current ? "#3498db" : "transparent")};
+  font-size:16px;
+  font-weight:thin;
   transition: border-bottom 0.5s ease-in-out;
 `;
 
@@ -36,8 +40,15 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
+const LogoImage = styled.img`
+  width:100%;
+  max-width: 110px;
+  margin-left:30px;
+  margin-right:30px;
+`;
 export default withRouter(({ location: { pathname } }) => (
   <Header>
+    <SLink to="/"><LogoImage src={logoImg} alt="betflix logo image" /></SLink>
     <List>
       <Item current={pathname === "/" || pathname.includes("movie")}>
         <SLink to="/">Movies</SLink>

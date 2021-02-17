@@ -1,14 +1,12 @@
-# Nomflix
+# Beflix
 
 Learning react and ES6 by building a Movie Discovery App.
-
 ## Screens Router setting (GNB)
 
 - [x] Home
 - [x] TV Shows
 - [x] Search
 - [x] Detail
-
 ## API Verbs
 ### Movies list
 
@@ -19,16 +17,10 @@ Learning react and ES6 by building a Movie Discovery App.
 - [x] Searching for movies
 ### TVs lists
 
-- [ ] Top Rated
-- [ ] Popular
-- [ ] Airing Today
-- [ ] Detail of TV program by id
-- [ ] Searching for TV program
-
-### Code Challenges
-
+- [x] Top Rated
+- [x] Popular
+- [x] Airing Today
+- [x] Detail of TV program by id
+- [x] Searching for TV program
 - [x] IMDB Link
-- [ ] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
-- [ ] Collections Link
-- [ ] /collections Route
-- [ ] On TV Show, show seasons and creators
+- [x] Make tabs of the Detail of Movie / Show for Videos, Production Countries, Companies and Seasons(TV show only)
