@@ -88,8 +88,8 @@ const TabProduct = ({ countries, companies }) => {
                                     {item.iso_3166_1 === "US" && <span role="img" aria-label="US flag" style={{ fontSize: "60px" }}>🇺🇸</span>}
                                     {item.iso_3166_1 === "CA" && <span role="img" aria-label="Canada flag" style={{ fontSize: "60px" }}>🇨🇦</span>}
                                     {item.iso_3166_1 === "JP" && <span role="img" aria-label="Japan flag" style={{ fontSize: "60px" }}>🇯🇵</span>}
-                                    {item.iso_3166_1 === "DE" && <span role="img" aria-label="Japan flag" style={{ fontSize: "60px" }}>🇩🇪</span>}
-                                    {item.iso_3166_1 === "KR" && <span role="img" aria-label="Japan flag" style={{ fontSize: "60px" }}>🇰🇷</span>}
+                                    {item.iso_3166_1 === "DE" && <span role="img" aria-label="Germany flag" style={{ fontSize: "60px" }}>🇩🇪</span>}
+                                    {item.iso_3166_1 === "KR" && <span role="img" aria-label="South Korea flag" style={{ fontSize: "60px" }}>🇰🇷</span>}
 
                                 </CountryName>
                             </CountryItem>
