@@ -381,7 +381,8 @@ export default function Detail({
                                                 (item) => (
                                                     item && item.key && (
                                                     <VidItem key={item.key}>
-                                                            <ReactPlayer url={`https://www.youtube-nocookie.com/embed/${item.key}`} width='480px'
+                                                            <ReactPlayer url={`https://www.youtube-nocookie.com/embed/${item.key}`}
+                                                                width='430px'
                                                                 height='240px' />
                                                     </VidItem>
                                                     )
